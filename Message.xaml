@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPals_Pet_CareService_App.Message"
+             Title="PetPals"
+             WidthRequest="380"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FFFFFF">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Button BackgroundColor="Transparent"
+                    WidthRequest="70"
+                    HeightRequest="70"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="300,0,0,-20">
+                <Button.ImageSource>
+                    <FileImageSource File="setting.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Label Text="PetPals"
+                   FontSize="32"
+                   FontFamily="Marcellus SC"
+                   TextColor="black"
+                   HorizontalOptions="CenterAndExpand"></Label>
+            
+            <Label Text="Messages" 
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   FontFamily="Inter"
+                   TextColor="black"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,20,0,20"/>
+            
+            <Frame BackgroundColor="#F9F6F6" Margin="10" Padding="10" CornerRadius="10" HasShadow="True" BorderColor="Transparent">
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="profilepic.png" 
+                           WidthRequest="50" 
+                           HeightRequest="50" 
+                           VerticalOptions="Center"/>
+                    <Label Text="Sean" 
+                           TextColor="Black"
+                           FontSize="18" 
+                           FontFamily="Inter"
+                           VerticalOptions="Center" 
+                           Margin="10,0"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSeanClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

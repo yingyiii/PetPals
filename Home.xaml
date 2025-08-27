@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPals_Pet_CareService_App.Home"
+             Title="Home"
+             WidthRequest="380"
+             BackgroundColor="#FFFFFF"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            IconImageSource="setting.png"                
+            Order="Primary" 
+            Priority="0" 
+            Clicked="OnSettingsClicked" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout>
+        <Button BackgroundColor="Transparent"
+                WidthRequest="70"
+                HeightRequest="70"
+                Margin="300,0,0,0">
+            <Button.ImageSource>
+                <FileImageSource File="setting.png"/>
+            </Button.ImageSource>
+        </Button>
+
+        <Button BackgroundColor="Transparent"
+        WidthRequest="70"
+        HeightRequest="70"
+        HorizontalOptions="EndAndExpand"
+        Clicked="OnBackButtonClicked"
+        Margin="0,-69,300,0">
+            <Button.ImageSource>
+                <FileImageSource File="back.png"/>
+            </Button.ImageSource>
+        </Button>
+
+        <Label x:Name="WelcomeLabel"
+               VerticalOptions="Center" 
+               HorizontalOptions="Center"
+               FontAttributes="Bold"
+               FontSize="20"
+               FontFamily="Inter"
+               TextColor="#000000"
+               Margin="0, 20, 0, 10" />
+
+        <Label Text="PetPals"
+               FontSize="70"
+               TextColor="Black"
+               HorizontalOptions="Center"
+               FontFamily="Marcellus SC"
+               Margin="0,30,0,40"/>
+
+        <!-- Grid Layout for Buttons -->
+        <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto">
+            <Frame BackgroundColor="#F9F6F6"
+                   WidthRequest="160"
+                   HeightRequest="110"
+                   Grid.Row="0" Grid.Column="0"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="add.png" WidthRequest="200" HeightRequest="50"/>
+                    <Label Text="Create Request" FontSize="15" HorizontalOptions="Center" HeightRequest="100" TextColor="Black"/>
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCreateRequestClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame BackgroundColor="#F9F6F6"
+                   WidthRequest="160"
+                   HeightRequest="110"
+                   Grid.Row="0" Grid.Column="1"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="viewquest.png" WidthRequest="200" HeightRequest="50"/>
+                    <Label Text="View My Request"  FontSize="15" HorizontalOptions="Center" HeightRequest="100" TextColor="Black" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnViewMyQuestsClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame BackgroundColor="#F9F6F6"
+                   WidthRequest="350"
+                   HeightRequest="120"
+                   Grid.Row="1" Grid.ColumnSpan="2"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent"
+                   Margin="0,30,0,30">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="message.png" WidthRequest="200" HeightRequest="50"/>
+                    <Label Text="Message"  FontSize="15" HorizontalOptions="Center" HeightRequest="100" TextColor="Black" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMessagesClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame BackgroundColor="#F9F6F6"
+                   WidthRequest="160"
+                   HeightRequest="110"
+                   Grid.Row="2" Grid.Column="0"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="myprofile.png" WidthRequest="200" HeightRequest="50"/>
+                    <Label Text="My Profile" FontSize="15" HorizontalOptions="Center" HeightRequest="100" TextColor="Black" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMyProfileClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Frame BackgroundColor="#F9F6F6"
+                   WidthRequest="160"
+                   HeightRequest="110"
+                   Grid.Row="2" Grid.Column="1"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="petprofile.png" WidthRequest="200" HeightRequest="50"/>
+                    <Label Text="My Pet Profile" FontSize="15" HorizontalOptions="Center" HeightRequest="100" TextColor="Black" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMyPetProfileClicked"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PetPals_Pet_CareService_App"
+             x:Class="PetPals_Pet_CareService_App.CreateRequest"
+             Title="PetPals"
+             WidthRequest="380"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FFFFFF">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:BoolToColorConverter x:Key="BoolToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:CreateRequestViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button BackgroundColor="Transparent"
+                WidthRequest="70"
+                HeightRequest="70"
+                HorizontalOptions="EndAndExpand"
+                Margin="300,0,0,-20">
+                <Button.ImageSource>
+                    <FileImageSource File="setting.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Label Text="PetPals"
+               FontSize="32"
+               FontFamily="Marcellus SC"
+               TextColor="black"
+               HorizontalOptions="CenterAndExpand"/>
+
+            <Label Text="Create a Request"
+               Padding="30"
+               FontAttributes="Bold"
+               FontSize="20"
+               FontFamily="Inter"
+               TextColor="black"
+               HorizontalOptions="CenterAndExpand"/>
+
+            <!-- Question Label -->
+            <Label Text="What service do you need?" 
+               FontFamily="Inter"
+               FontSize="20"
+               HorizontalOptions="Start"
+               VerticalOptions="StartAndExpand"
+               TextColor="#000000"
+               Margin="50,0,0,20"/>
+
+            <!-- Grid Layout for Buttons -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+                <Frame BackgroundColor="{Binding IsPetSittingSelected, Converter={StaticResource BoolToColorConverter}}"
+                   WidthRequest="140"
+                   HeightRequest="120"
+                   Grid.Row="0" Grid.Column="0"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent"
+                   Margin="30,0,0,0">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="petsitting.png" WidthRequest="200" HeightRequest="50" BackgroundColor="#F9F6F9"/>
+                        <Label Text="Pet Sitting" FontSize="15" HorizontalTextAlignment="Center"  HeightRequest="100" TextColor="Black" BackgroundColor="#F9F6F9"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TogglePetSittingCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame BackgroundColor="{Binding IsDropInsSelected, Converter={StaticResource BoolToColorConverter}}"
+                   WidthRequest="140"
+                   HeightRequest="120"
+                   Grid.Row="0" Grid.Column="1"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent"
+                   Margin="0,0,70,0">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="dropins.png" WidthRequest="200" HeightRequest="50" BackgroundColor="#F9F6F9"/>
+                        <Label Text="Drop-ins" FontSize="15" HorizontalTextAlignment="Center"  HeightRequest="100" TextColor="Black" BackgroundColor="#F9F6F9"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleDropInsCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame BackgroundColor="{Binding IsPetWalkingSelected, Converter={StaticResource BoolToColorConverter}}"
+                   WidthRequest="140"
+                   HeightRequest="120"
+                   Grid.Row="1" Grid.Column="0"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent"
+                   Margin="30,10,0,0">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="petwalking.png" WidthRequest="200" HeightRequest="50" BackgroundColor="#F9F6F9"/>
+                        <Label Text="Pet Walking" FontSize="15"  HorizontalTextAlignment="Center"  HeightRequest="100" TextColor="Black" BackgroundColor="#F9F6F9"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TogglePetWalkingCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+
+                <Frame BackgroundColor="{Binding IsOthersSelected, Converter={StaticResource BoolToColorConverter}}"
+                   WidthRequest="140"
+                   HeightRequest="120"
+                   Grid.Row="1" Grid.Column="1"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   BorderColor="Transparent"
+                   Margin="0,10,70,0">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <Image Source="others.png" WidthRequest="200" HeightRequest="50" BackgroundColor="#F9F6F9"/>
+                        <Label Text="Others" FontSize="15" HorizontalTextAlignment="Center"  HeightRequest="100" TextColor="Black" BackgroundColor="#F9F6F9"/>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ToggleOthersCommand}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+
+            <!-- Select your pet section -->
+            <Label Text="Select your pet" 
+               FontFamily="Inter"
+               FontSize="20"
+               HorizontalOptions="Start"
+               VerticalOptions="StartAndExpand"
+               TextColor="#000000"
+               Margin="50,30,0,20"/>
+
+            <Frame BackgroundColor="#F9F6F6"
+               CornerRadius="10"
+               HasShadow="False"
+               HeightRequest="100"
+               BorderColor="Transparent"
+               Margin="50,0,50,10"
+               Padding="10">
+                <HorizontalStackLayout>
+                    <!-- Cat Button -->
+                    <VerticalStackLayout HorizontalOptions="Center">
+                        <Button Text=""
+                            VerticalOptions="CenterAndExpand"
+                            BackgroundColor="{Binding IsSeilaSelected, Converter={StaticResource BoolToColorConverter}}"
+                            WidthRequest="80"
+                            HeightRequest="70"
+                            Command="{Binding ToggleSeilaCommand}">
+                            <Button.ImageSource>
+                                <FileImageSource File="cat.png"/>
+                            </Button.ImageSource>
+                        </Button>
+                        <Label Text="Seila" 
+                           HorizontalTextAlignment="Center"
+                           FontSize="15"
+                           TextColor="Black"
+                           Margin="0,-10,0,0"/>
+                    </VerticalStackLayout>
+
+                    <!-- Dynamic list of pets using CollectionView -->
+                    <CollectionView ItemsSource="{Binding Pets}" Margin="10,0,0,0">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                                    <Button Text=""
+                                            BackgroundColor="{Binding SelectedPet, Converter={StaticResource BoolToColorConverter}}"
+                                            WidthRequest="80"
+                                            HeightRequest="70"
+                                            Command="{Binding ToggleSeilaCommand}">
+                                        <Button.ImageSource>
+                                            <FileImageSource File="cat.png"/>
+                                        </Button.ImageSource>
+                                    </Button>
+                                    <Label Text="{Binding Name}"
+                                           HorizontalTextAlignment="Center"
+                                           FontSize="15"
+                                           TextColor="Black"
+                                           Margin="0,-10,0,0"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- Add Button -->
+                    <Button Text="Add" 
+                        BackgroundColor="#F9F6F9"
+                        WidthRequest="80"
+                        HeightRequest="70"
+                        HorizontalOptions="Center"
+                        Clicked="AddClicked">
+                        <Button.ImageSource>
+                            <FileImageSource File="add1.png"/>
+                        </Button.ImageSource>
+                    </Button>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Question Label -->
+            <Label Text="Price" 
+               FontFamily="Inter"
+               FontSize="20"
+               HorizontalOptions="Start"
+               VerticalOptions="StartAndExpand"
+               TextColor="#000000"
+               Margin="50,30,0,0"/>
+
+            <!-- Text Box for Price -->
+            <Entry x:Name="PriceEntry"  
+                   Placeholder="AUD/hour"
+                   FontFamily="Inter"
+                   FontSize="20"
+                   Keyboard="Numeric"
+                   WidthRequest="300"
+                   TextColor="Black"
+                   BackgroundColor="#F9F6F6"
+                   HorizontalOptions="Start"
+                   Margin="50,20,0,20"
+                   Text="{Binding Price, Mode=TwoWay}"/>
+            <!-- Binding to Price property -->
+
+            <!-- Next Button -->
+            <Button Text="Next" 
+                Margin="0,30,0,0"
+                BackgroundColor="#E4BB97" 
+                TextColor="Black"
+                WidthRequest="100"
+                FontAttributes="Bold"
+                Command="{Binding ValidateCommand}"
+                    Clicked="OnNextClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

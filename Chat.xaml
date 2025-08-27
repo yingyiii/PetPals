@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPals_Pet_CareService_App.Chat"
+             Title="{Binding Name}"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FFFFFF">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button BackgroundColor="Transparent"
+                    WidthRequest="70"
+                    HeightRequest="70"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="300,0,0,-20">
+                <Button.ImageSource>
+                    <FileImageSource File="setting.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Label Text="PetPals"
+                   FontSize="32"
+                   FontFamily="Marcellus SC"
+                   TextColor="black"
+                   Margin="0,0,0,10"
+                   HorizontalOptions="CenterAndExpand"></Label>
+
+            <Label Text="Sean"
+                   TextColor="Black"
+                   FontSize="18"
+                   HorizontalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontFamily="Inter"></Label>
+
+            <ScrollView x:Name="MessageList" VerticalOptions="FillAndExpand">
+                <StackLayout x:Name="MessageContainer" 
+                             BackgroundColor="#FFFFFF"
+                             VerticalOptions="EndAndExpand"
+                             WidthRequest="350"
+                             Margin="20"
+                             Orientation="Vertical"/>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal" Padding="10">
+                <Entry x:Name="MessageEntry" 
+                       Placeholder="Type here..." 
+                       HorizontalOptions="FillAndExpand" 
+                       TextColor="Black" 
+                       BackgroundColor="#F9F6F6"/>
+                <ImageButton Clicked="OnSendClicked" 
+                             Source="send.png"
+                             HeightRequest="30"
+                             WidthRequest="30"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPals_Pet_CareService_App.ViewQuest"
+             Title="PetPals"
+             WidthRequest="380"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FFFFFF">
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+            <Button BackgroundColor="Transparent"
+                    WidthRequest="70"
+                    HeightRequest="70"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="300,0,0,-20">
+                <Button.ImageSource>
+                    <FileImageSource File="setting.png"/>
+                </Button.ImageSource>
+            </Button>
+
+                <Button BackgroundColor="Transparent"
+                        WidthRequest="70"
+                        HeightRequest="70"
+                        HorizontalOptions="EndAndExpand"
+                        Clicked="OnBackButtonClicked"
+                        Margin="0,-45,300,0">
+                    <Button.ImageSource>
+                        <FileImageSource File="back.png"/>
+                    </Button.ImageSource>
+                </Button>
+
+                <Label Text="PetPals"
+                   FontSize="32"
+                   FontFamily="Marcellus SC"
+                   TextColor="black"
+                   HorizontalOptions="CenterAndExpand"></Label>
+
+            <Label Text="View My Request" 
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   FontFamily="Inter"
+                   TextColor="black"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,20,0,20"/>
+                <VerticalStackLayout Padding="20">
+                    <!-- Frame around the content -->
+                    <Frame BorderColor="Transparent"
+                           BackgroundColor="#F9F6F9"
+                           CornerRadius="10"
+                           Margin="10,0,10,0"
+                           HasShadow="True">
+                        <VerticalStackLayout>
+                            <Label x:Name="ServiceLabel" FontSize="18" FontFamily="Inter" TextColor="Black" />
+                            <Label x:Name="PetLabel" FontSize="18" FontFamily="Inter" TextColor="Black"/>
+                            <Label x:Name="PriceLabel" FontSize="18" FontFamily="Inter" TextColor="Black" />
+                            <Label x:Name="DateLabel" FontSize="18" FontFamily="Inter" TextColor="Black" />
+                            <Label x:Name="TimeLabel" FontSize="18" FontFamily="Inter" TextColor="Black"/>
+                            <Label x:Name="LocationLabel" FontSize="18" FontFamily="Inter" TextColor="Black"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                    </VerticalStackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

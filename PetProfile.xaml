@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPals_Pet_CareService_App.PetProfile"
+             Title="Pet Profile"
+             WidthRequest="380"
+             BackgroundColor="#FFFFFF"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+       IconImageSource="setting.png"                
+       Order="Primary" 
+       Priority="0" 
+       Clicked="OnSettingsClicked" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button BackgroundColor="Transparent"
+                    WidthRequest="70"
+                    HeightRequest="70"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="300,0,0,-20">
+                <Button.ImageSource>
+                    <FileImageSource File="setting.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Label Text="PetPals"
+                   FontSize="32"
+                   FontFamily="Marcellus SC"
+                   TextColor="black"
+                   HorizontalOptions="CenterAndExpand"></Label>
+
+            <Label Text="My Pet"
+                   Padding="20"
+                   FontAttributes="Bold"
+                   FontSize="24"
+                   FontFamily="Inter"
+                   TextColor="black"
+                   HorizontalOptions="CenterAndExpand"></Label>
+            
+            <!-- Pet Profile Picture Section -->
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Frame BorderColor="#000000" 
+                       CornerRadius="75"
+                       HeightRequest="150"
+                       WidthRequest="150"
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       Padding="0">
+                    <Image Source="{Binding ProfilePicture}" 
+                           Aspect="AspectFill"
+                           HeightRequest="150"
+                           WidthRequest="150"/>
+                    </Frame>
+                    <Button Text="Change Picture"
+                            FontSize="12"
+                            BackgroundColor="#F9F6F9"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Clicked="OnEditProfilePictureClicked"/>
+            </StackLayout>
+
+            <!-- Pet Name and Gender -->
+            <StackLayout Orientation="Horizontal" Spacing="10" Margin="0,20,0,0">
+                <Label Text="Pet Name"
+                       TextColor="Black"
+                       Margin="30,20,0,0">
+                </Label>
+                <Entry x:Name="PetName"
+                       Placeholder="Name" 
+                       TextColor="black"
+                       HeightRequest="10"
+                       WidthRequest="200"   
+                       BackgroundColor="#F9F6F9"
+                       Margin = "-80,50,0,0"/>
+
+                <Label Text="Gender"
+                       TextColor="Black"
+                       Margin="20,20,0,0"></Label>
+                <Picker TextColor="Black" BackgroundColor="#F9F6F9" Margin="-60,50,0,0" WidthRequest="110">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Male</x:String>
+                            <x:String>Female</x:String>
+                            <x:String>Others</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </StackLayout>
+
+            <!-- Date of Birth -->
+            <Label Text="Date of Birth" FontSize="15" TextColor="Black" Margin="30,20,0,0"/>
+            <DatePicker Margin="-180,10,0,0" WidthRequest="150" BackgroundColor="#F9F6F9" TextColor="Black"/>
+
+            <Label Text="Pet Type"
+           TextColor="Black"
+           Margin="210,-75,0,0"></Label>
+            <Picker x:Name="PetType" 
+                    TextColor="Black" 
+                    BackgroundColor="#F9F6F9" 
+                    Margin="240,11,60,0" 
+                    WidthRequest="150"
+                    SelectedIndexChanged="OnPetTypeSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Cat</x:String>
+                        <x:String>Dog</x:String>
+                        <x:String>Others</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Introduction -->
+            <Label Text="Introduction" FontSize="15" TextColor="Black" Margin="30,20,0,0"/>
+            <Editor Placeholder="Introduction" TextColor="Black" BackgroundColor="#F9F6F9" Margin="0,20,0,0" HeightRequest="100" WidthRequest="330"></Editor>
+
+
+           
+            <!-- Edit and Add More Pet Buttons -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,30,0,0" Spacing="20" >
+                
+                <Button Text="+" Clicked="OnAddMorePetClicked" BackgroundColor="#F1D8C3"/>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

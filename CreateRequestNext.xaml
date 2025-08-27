@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:PetPals_Pet_CareService_App"
+             x:Class="PetPals_Pet_CareService_App.CreateRequestNext"
+             Title="PetPals"
+             WidthRequest="380"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#FFFFFF">
+
+    <ContentPage.BindingContext>
+        <local:LocationViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout >
+
+            <!-- Title -->
+            <Button BackgroundColor="Transparent"
+            WidthRequest="70"
+            HeightRequest="70"
+            HorizontalOptions="EndAndExpand"
+            Margin="300,0,0,-20">
+                <Button.ImageSource>
+                    <FileImageSource File="setting.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Label Text="PetPals"
+            FontSize="32"
+            FontFamily="Marcellus SC"
+            TextColor="black"
+            HorizontalOptions="CenterAndExpand"></Label>
+
+            <!-- Title -->
+            <Label Text="Availability" 
+                   FontAttributes="Bold"
+                   Padding="30"
+                   FontSize="20"
+                   FontFamily="Inter"
+                   TextColor="black"
+                   HorizontalOptions="CenterAndExpand"/>
+
+            <!-- Date Picker -->
+            <Label Text="Date" 
+                   FontSize="20"
+                   HorizontalOptions="Start" 
+                   Margin="50,0,0,0"
+                   TextColor="Black"/>
+            <DatePicker x:Name="DatePicker"
+                        Margin="0,20,0,20"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F9F6F9"
+                        WidthRequest="300"
+                        TextColor="#000000"/>
+
+            <!-- Time Picker -->
+            <Label Text="Time" 
+                   FontSize="20"
+                   HorizontalOptions="Start"
+                   Margin="50,0,0,0"
+                   TextColor="black"/>
+            <TimePicker x:Name="TimePicker"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#F9F6F9"
+                        Margin="0,20,0,0"
+                        WidthRequest="300"
+                        TextColor="#000000"/>
+
+            <!-- Location Section -->
+            <StackLayout>
+                <Label Text="Location" 
+                       FontSize="20"
+                       HorizontalOptions="Start"
+                       TextColor="Black"
+                       Margin="50,20,0,0"/>
+                <Entry x:Name="LocationEntry"
+                       Placeholder="Detect or enter location"
+                       TextColor="Black"
+                       Margin="0,20,0,0"
+                       WidthRequest="300"
+                       BackgroundColor="#F9F6F9"
+                       HorizontalOptions="FillAndExpand"
+                       TextChanged="OnLocationTextChanged"
+                       Text="{Binding LocationEntryText, Mode=TwoWay}"/>
+
+                <!-- ListView to display autocomplete suggestions -->
+                <ListView x:Name="LocationSuggestionsListView"
+                          ItemsSource="{Binding LocationSuggestions}"
+                          IsVisible="{Binding AreSuggestionsVisible}"
+                          BackgroundColor="#F9F6F9"
+                          WidthRequest="300" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Description}"
+                                      Tapped="OnSuggestionTapped"
+                                      TextColor="Black"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <!-- Notes -->
+            <Label Text="Notes" 
+                   FontSize="20"
+                   Margin="50,20,0,0"
+                   HorizontalOptions="Start"
+                   TextColor="#000000"/>
+            <Editor x:Name="NotesEditor"
+                    Placeholder="Enter your notes here"
+                    BackgroundColor="#F9F6F9"
+                    AutoSize="TextChanges"
+                    TextColor="Black"
+                    HeightRequest="100"
+                    WidthRequest="300"
+                    Margin="0,20,0,0"
+                    HorizontalOptions="FillAndExpand"/>
+
+            <!-- Cancel and Submit Buttons -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+                <Button Text="Cancel" 
+                        BackgroundColor="#E4BB97" 
+                        WidthRequest="100"
+                        Grid.Row="0" Grid.Column="0"
+                        HorizontalOptions="Center"
+                        Margin="50,50,0,0"
+                        Clicked="OnSubmitRequestClicked"/>
+
+                <Button Text="Create" 
+                        BackgroundColor="#E4BB97" 
+                        WidthRequest="100"
+                        HorizontalOptions="Center"
+                        Margin="0,50,50,0"
+                        Grid.Row="0" Grid.Column="1"
+                        Clicked="OnSubmitRequestClicked"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetPals_Pet_CareService_App.MyProfile"
+             NavigationPage.HasNavigationBar="False"
+             WidthRequest="380"
+             BackgroundColor="#FFFFFF">
+
+    <ScrollView>
+        <StackLayout>
+            <Button BackgroundColor="Transparent"
+        WidthRequest="70"
+        HeightRequest="70"
+        HorizontalOptions="EndAndExpand"
+        Margin="300,0,0,-20">
+                <Button.ImageSource>
+                    <FileImageSource File="setting.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Button BackgroundColor="Transparent"
+            WidthRequest="70"
+            HeightRequest="70"
+            HorizontalOptions="EndAndExpand"
+            Clicked="OnBackButtonClicked"
+            Margin="0,-45,300,0">
+                <Button.ImageSource>
+                    <FileImageSource File="back.png"/>
+                </Button.ImageSource>
+            </Button>
+
+            <Label Text="PetPals"
+       FontSize="32"
+       FontFamily="Marcellus SC"
+       TextColor="black"
+       HorizontalOptions="CenterAndExpand"></Label>
+
+            <Label Text="My Profile" 
+       FontAttributes="Bold"
+       FontSize="20"
+       FontFamily="Inter"
+       TextColor="black"
+       HorizontalOptions="CenterAndExpand"
+       Margin="0,20,0,20"/>
+
+            <!-- Profile Picture -->
+            <Frame BorderColor="#000000" 
+                   CornerRadius="75"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+                <Image Source="default_profile_picture.png" 
+                       Aspect="AspectFill"
+                       HeightRequest="150"
+                       WidthRequest="150"/>
+            </Frame>
+            <Button Text="Change Picture"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#F9F6F9"
+                    Clicked="OnChangePictureClicked"/>
+
+            <!-- First Name -->
+            <Label Text="First Name" FontSize="15" TextColor="Black" Margin="20,20,0,0"/>
+            <Label x:Name="FirstNameLabel" Text="{Binding FirstName}" Margin="10,0,0,0"/>
+
+            <!-- Last Name -->
+            <Label Text="Last Name" FontSize="15" TextColor="Black" Margin="20,20,0,0"/>
+            <Label x:Name="LastNameLabel" Text="{Binding LastName}" Margin="10,0,0,0"/>
+
+            <!-- Date of Birth -->
+            <Label Text="Date of Birth" FontSize="15" TextColor="Black" Margin="20,20,0,0"/>
+            <Label x:Name="DateOfBirthLabel" Text="{Binding DateOfBirth}" Margin="10,0,0,0"/>
+
+            <!-- Gender -->
+            <Label Text="Gender" FontSize="15" TextColor="Black" Margin="20,20,0,0"/>
+            <Label x:Name="GenderLabel" Text="{Binding Gender}" Margin="10,0,0,0"/>
+
+            <!-- Email -->
+            <Label Text="Email" FontSize="15" TextColor="Black" Margin="20,20,0,0"/>
+            <Label x:Name="EmailLabel" Text="{Binding Email}" Margin="10,0,0,0"/>
+
+            <!-- Pasword -->
+            <Label Text="Password" FontSize="15" TextColor="Black" Margin="20,20,0,0"/>
+            <Label x:Name="PasswordLabel" Text="{Binding Password}" Margin="10,0,0,0"/>
+
+            <!-- Phone -->
+            <Label Text="Phone" FontSize="15" TextColor="Black" Margin="20,20,0,0"/>
+            <Label x:Name="PhoneLabel" Text="{Binding Phone}" Margin="10,0,0,0"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
